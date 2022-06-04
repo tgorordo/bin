@@ -7,6 +7,8 @@ if ! [ -x "$(command -v gh)" ]; then
 			| sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
 		sudo apt update
 		sudo apt install gh
+	elif [ -x "$(command -v xbps-install)" ] then
+		sudo xbps-install -Syu github-cli
 	else
 		echo "Error: Unsupported distro!" 1>&2 && exit 1
 	fi
